@@ -18,14 +18,13 @@ if (isset($_SESSION['usuario'])) {
         <h2>Iniciar Sesión</h2>
 
         <?php
-        if (isset($_GET['error'])) {
+        if (isset($_GET['error']) && $_GET['error'] === 'sesion_invalida') {
+            echo '<div class="alerta error">Tu sesión ya no es válida. Inicia sesión nuevamente.</div>';
+        } elseif (isset($_GET['error'])) {
             echo '<div class="alerta error">Usuario o contraseña incorrectos.</div>';
         }
         if (isset($_GET['cerrada'])) {
             echo '<div class="alerta exito">Sesión cerrada correctamente.</div>';
-        }
-        if (isset($_GET['error']) && $_GET['error'] === 'sesion_invalida') {
-            echo '<div class="alerta error">Tu sesión ya no es válida. Inicia sesión nuevamente.</div>';
         }
         ?>
 
@@ -41,7 +40,13 @@ if (isset($_SESSION['usuario'])) {
             <button type="submit" class="btn-entrar">Entrar</button>
         </form>
 
-
+        <!-- SOLO PRÁCTICA: eliminar en producción -->
+        <div class="credenciales-hint">
+            <span class="hint-titulo"> Credenciales de acceso </span>
+            <strong>Admin</strong> → usuario: <strong>Emmanuel</strong> &nbsp;|&nbsp; contraseña: <strong>12345678</strong><br>
+            <strong>Usuario</strong> → usuario: <strong>chispa</strong> &nbsp;|&nbsp; contraseña: <strong>12345678</strong><br>
+            <strong>Usuario</strong> → usuario: <strong>nuevo</strong> &nbsp;|&nbsp; contraseña: <strong>12345678</strong>
+        </div>
     </div>
 </body>
 </html>
