@@ -12,6 +12,11 @@ if (isset($_SESSION['usuario'])) {
     <meta charset="UTF-8">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="estilos.css">
+    <style>
+        body {
+            background: #0d0d0d;
+        }
+    </style>
 </head>
 <body>
     <div class="login-container">
@@ -22,9 +27,6 @@ if (isset($_SESSION['usuario'])) {
             echo '<div class="alerta error">Tu sesión ya no es válida. Inicia sesión nuevamente.</div>';
         } elseif (isset($_GET['error'])) {
             echo '<div class="alerta error">Usuario o contraseña incorrectos.</div>';
-        }
-        if (isset($_GET['cerrada'])) {
-            echo '<div class="alerta exito">Sesión cerrada correctamente.</div>';
         }
         ?>
 
