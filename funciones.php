@@ -61,7 +61,7 @@ function usuarioExiste(string $usuario): bool {
     return $stmt->fetchColumn() > 0;
 }
 
-function agregarUsuario(string $usuario, string $password, string $tipo, string $email): true|string {
+function agregarUsuario(string $usuario, string $password, string $tipo, string $email): bool|string {
     if (usuarioExiste($usuario)) {
         return "El usuario ya existe.";
     }
@@ -82,7 +82,7 @@ function agregarUsuario(string $usuario, string $password, string $tipo, string 
     return true;
 }
 
-function modificarUsuario(string $usuarioOriginal, string $nuevoUsuario, string $tipo, string $email, ?string $nuevaPassword = null): true|string {
+function modificarUsuario(string $usuarioOriginal, string $nuevoUsuario, string $tipo, string $email, ?string $nuevaPassword = null): bool|string {
     $db = conectarDB();
     $stmt = $db->prepare("SELECT COUNT(*) FROM usuarios WHERE usuario = :original");
     $stmt->execute([':original' => $usuarioOriginal]);
@@ -115,7 +115,7 @@ function modificarUsuario(string $usuarioOriginal, string $nuevoUsuario, string 
     return true;
 }
 
-function eliminarUsuario(string $usuario): true|string {
+function eliminarUsuario(string $usuario): bool|string {
     if (!usuarioExiste($usuario)) {
         return "Usuario no encontrado.";
     }
