@@ -12,6 +12,16 @@ function conectarDB(): PDO {
         tipo TEXT NOT NULL DEFAULT 'Usuario',
         email TEXT UNIQUE NOT NULL
     )");
+
+    // Si la tabla está vacía, insertar usuarios por defecto
+    $count = $db->query("SELECT COUNT(*) FROM usuarios")->fetchColumn();
+    if ($count == 0) {
+        $stmt = $db->prepare("INSERT INTO usuarios (usuario, password, tipo, email) VALUES (?, ?, ?, ?)");
+        $stmt->execute(['Emmanuel', '12345678', 'Admin',   'emmanuel@temp.com']);
+        $stmt->execute(['chispa',   '12345678', 'Usuario', 'chispa@temp.com']);
+        $stmt->execute(['nuevo',    '12345678', 'Usuario', 'nuevo@temp.com']);
+    }
+
     return $db;
 }
 
@@ -28,9 +38,6 @@ function leerUsuarios(): array {
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-/**
- * Obtiene los datos de un usuario por su nombre directamente (fix #8).
- */
 function obtenerUsuarioPorNombre(string $usuario): array|false {
     $db = conectarDB();
     $stmt = $db->prepare("SELECT usuario, tipo, email FROM usuarios WHERE usuario = :usuario");

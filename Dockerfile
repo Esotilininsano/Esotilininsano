@@ -17,11 +17,11 @@ RUN rm -f /var/www/html/index.html
 
 COPY . /var/www/html/
 
-# Permisos correctos: directorio y db deben ser escribibles por Apache
+# Permisos amplios para que SQLite pueda leer/escribir sin problemas
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html \
-    && chmod 664 /var/www/html/usuarios.db \
-    && chmod 775 /var/www/html
+    && chmod 777 /var/www/html \
+    && chmod 666 /var/www/html/usuarios.db 2>/dev/null || true
 
 EXPOSE 80
 
