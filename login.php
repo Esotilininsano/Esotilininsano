@@ -42,12 +42,12 @@ if (isset($_SESSION['usuario'])) {
             <button type="submit" class="btn-entrar">Entrar</button>
         </form>
 
-        <!-- SOLO PRÁCTICA: eliminar en producción -->
+        <!--  PRÁCTICA>
         <div class="credenciales-hint">
             <span class="hint-titulo"> Credenciales de acceso </span>
-            <strong>Admin</strong> → usuario: <strong>Emmanuel</strong> &nbsp;|&nbsp; contraseña: <strong>12345678</strong><br>
-            <strong>Usuario</strong> → usuario: <strong>chispa</strong> &nbsp;|&nbsp; contraseña: <strong>12345678</strong><br>
-            <strong>Usuario</strong> → usuario: <strong>nuevo</strong> &nbsp;|&nbsp; contraseña: <strong>12345678</strong>
+            <strong>Admin</strong>  usuario: <strong>Emmanuel</strong> &nbsp; &nbsp; contraseña: <strong>12345678</strong><br>
+            <strong>Usuario</strong>  usuario: <strong>chispa</strong> &nbsp; &nbsp; contraseña: <strong>12345678</strong><br>
+            <strong>Usuario</strong>  usuario: <strong>nuevo</strong> &nbsp; &nbsp; contraseña: <strong>12345678</strong>
         </div>
     </div>
 </body>
