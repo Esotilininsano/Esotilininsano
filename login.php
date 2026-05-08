@@ -42,7 +42,7 @@ if (isset($_SESSION['usuario'])) {
             <button type="submit" class="btn-entrar">Entrar</button>
         </form>
 
-        <!--  PRÁCTICA>
+        
         <div class="credenciales-hint">
             <span class="hint-titulo"> Credenciales de acceso </span>
             <strong>Admin</strong>  usuario: <strong>Emmanuel</strong> &nbsp; &nbsp; contraseña: <strong>12345678</strong><br>
